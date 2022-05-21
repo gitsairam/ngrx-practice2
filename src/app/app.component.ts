@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { selectBookCollection, selectBooks } from './state/book.selectors';
-import { retrievedBookList, addBook, removeBook } from './state/book.actions';
+import {
+  retrievedBookList,
+  addBook,
+  removeBook,
+  startFetch,
+} from './state/book.actions';
 import { GoogleBooksService } from './book-list/book.service';
 
 @Component({
@@ -24,8 +29,9 @@ export class AppComponent {
   constructor(private booksService: GoogleBooksService, private store: Store) {}
 
   ngOnInit() {
-    this.booksService
-      .getBooks()
-      .subscribe((books) => this.store.dispatch(retrievedBookList({ books })));
+    // this.booksService
+    //   .getBooks()
+    //   .subscribe((books) => this.store.dispatch(retrievedBookList({ books })));
+    this.store.dispatch(startFetch);
   }
 }
