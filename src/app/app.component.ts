@@ -32,6 +32,6 @@ export class AppComponent {
     // this.booksService
     //   .getBooks()
     //   .subscribe((books) => this.store.dispatch(retrievedBookList({ books })));
-    this.store.dispatch(startFetch);
+    this.store.dispatch(startFetch());
   }
 }

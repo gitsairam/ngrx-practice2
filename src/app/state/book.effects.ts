@@ -9,7 +9,7 @@ import { startFetch, retrievedBookList } from './book.actions';
 export class BookEffects {
   loadBooks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(startFetch),
+      ofType(startFetch().type),
       mergeMap(() =>
         this.bookService.getBooks().pipe(
           map((books) => retrievedBookList({ books })),
